@@ -1,5 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:reb_tec_app/screens/dialogs.dart';
 import 'package:reb_tec_app/screens/executions.dart';
 import 'package:reb_tec_app/screens/home.dart';
 import 'package:reb_tec_app/screens/settings.dart';
@@ -44,6 +45,15 @@ class _RebTecAppState extends State<RebTecApp> {
       ),
       home: Builder(
         builder: (context) => Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) =>
+                      Dialogs.addExecution(context))
+            },
+            child: Icon(Icons.add),
+          ),
           // appBar: AppBar(title: Text("Bottom Nav Bar")),
           body: SizedBox.expand(
             child: PageView(
@@ -65,8 +75,7 @@ class _RebTecAppState extends State<RebTecApp> {
               _pageController.jumpToPage(index);
             },
             items: <BottomNavyBarItem>[
-              BottomNavyBarItem(
-                  title: Text('Home'), icon: Icon(Icons.home)),
+              BottomNavyBarItem(title: Text('Home'), icon: Icon(Icons.home)),
               BottomNavyBarItem(
                   title: Text('Executions'), icon: Icon(Icons.apps)),
               BottomNavyBarItem(
